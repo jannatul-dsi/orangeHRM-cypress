@@ -1,9 +1,10 @@
 const { faker } = require("@faker-js/faker");
+const { after, values, invoke } = require("lodash");
 
 describe("template spec", () => {
   const adminUserName = "Admin";
   const adminPassword = "admin123";
-  const employeeCredentialsFile = "employeeCredentials.json"
+  const employeeCredentialsFile = "employeeCredentials.json";
 
   function login(userName, password) {
     cy.waitTillVisible("input");
@@ -32,6 +33,7 @@ describe("template spec", () => {
     cy.get("h6").should("have.text", "PIM");
     cy.get("button").contains("Add").click();
     cy.waitTillVisible("h6");
+    cy.waitTillVisible("input");
 
     const { firstName, lastName } = getUserName();
 
@@ -44,7 +46,6 @@ describe("template spec", () => {
       firstName,
       lastName
     );
-
     cy.get("label")
       .contains("Employee Id")
       .parent()
@@ -75,6 +76,7 @@ describe("template spec", () => {
             });
         };
         checkUniqueId();
+        console.log(employeeId);
         cy.get("label")
           .contains("Username")
           .parent()
@@ -93,15 +95,22 @@ describe("template spec", () => {
           .siblings("div")
           .find("input")
           .type(password);
-        cy.get("button[type='submit']").click();
       });
+
+    cy.get("button[type='submit']").click();
+    cy.waitTillVisible(".oxd-text--toast-message");
     cy.get(".oxd-text--toast-message").should(
       "have.text",
       "Successfully Saved"
     );
     cy.waitTillVisible("h6");
     cy.get("h6").should("contain.text", fullName);
-    storeEmployeeCredentials(username, password);
+
+    return {
+      username,
+      password,
+      employeeId,
+    };
   }
 
   function storeEmployeeCredentials(username, password) {
@@ -118,6 +127,17 @@ describe("template spec", () => {
   it("passes", () => {
     cy.waitTillVisible("h6");
     cy.get("h6").should("have.text", "Dashboard");
-    createEmployee();
+    const { username, password, employeeId } = createEmployee();
+    storeEmployeeCredentials(username, password);
+    cy.get("a").contains("PIM").click();
+    cy.waitTillVisible("h5");
+    cy.get("h5").should("have.text", "Employee Information");
+    cy.get("label")
+      .contains("Employee Id")
+      .parent()
+      .siblings("div")
+      .find("input")
+      .type(employeeId);
+    cy.get("button[type='submit']").click();
   });
 });
