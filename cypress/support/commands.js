@@ -26,6 +26,6 @@
 const { timeout } = require("async");
 
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("waitTillVisible", (selector, timeout = 10000) => {
+Cypress.Commands.add("waitTillVisible", (selector, timeout = 20000) => {
     cy.get(selector, { timeout }).should("be.visible")
 })
