@@ -1,9 +1,9 @@
 const { faker } = require("@faker-js/faker");
-const { random } = require("lodash");
 
 describe("template spec", () => {
   const adminUserName = "Admin";
   const adminPassword = "admin123";
+  const employeeCredentialsFile = "employeeCredentials.json"
 
   function login(userName, password) {
     cy.waitTillVisible("input");
@@ -40,6 +40,11 @@ describe("template spec", () => {
 
     const fullName = firstName + " " + lastName;
 
+    const { username, password } = generateUsernameAndPassword(
+      firstName,
+      lastName
+    );
+
     cy.get("label")
       .contains("Employee Id")
       .parent()
@@ -70,10 +75,6 @@ describe("template spec", () => {
             });
         };
         checkUniqueId();
-        const { username, password } = generateUsernameAndPassword(
-          firstName,
-          lastName
-        );
         cy.get("label")
           .contains("Username")
           .parent()
@@ -100,6 +101,14 @@ describe("template spec", () => {
     );
     cy.waitTillVisible("h6");
     cy.get("h6").should("contain.text", fullName);
+    storeEmployeeCredentials(username, password);
+  }
+
+  function storeEmployeeCredentials(username, password) {
+    cy.writeFile(`cypress/fixtures/${employeeCredentialsFile}`, {
+      username,
+      password,
+    });
   }
   before(() => {
     cy.visit("/");
