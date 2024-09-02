@@ -135,6 +135,29 @@ describe("template spec", () => {
     cy.get('input[value = "2"]')
       .check({ force: true });
   }
+  function updateGenderAndBloodGroup() {
+    scrollToElementContaining('Gender')
+    cy.get('label').contains('Gender').then(() => {
+      selectRadioByLabel()
+    })
+    cy.get("button[type='submit']").contains("Save").first().click()
+    cy.waitTillVisible(".oxd-text--toast-message");
+    cy.get(".oxd-text--toast-message").should(
+      "have.text",
+      "Successfully Updated"
+    );
+
+    scrollToElementContaining('Blood Type')
+    cy.get('label').contains("Blood Type").parent('div').siblings("div").find("i").click()
+    cy.get('div[role="listbox"]').should('be.visible')
+    cy.get('div[role="option"]').contains("O+").click();
+    cy.get('h6').contains("Custom Fields").siblings("form").find("button[type='submit']").contains("Save").click()
+    cy.waitTillVisible(".oxd-text--toast-message");
+    cy.get(".oxd-text--toast-message").should(
+      "have.text",
+      "Successfully Saved"
+    );
+  }
 
   before(() => {
     cy.visit("/");
@@ -162,7 +185,7 @@ describe("template spec", () => {
     cy.get(".orangehrm-directory-card-header")
       .invoke('text')
       .then((text) => {
-        const normalizedText = text.replace(/\s+/g, ' ').trim(); // Collapse multiple spaces into one and trim
+        const normalizedText = text.replace(/\s+/g, ' ').trim();
         expect(normalizedText).to.eq(fullName);
       });
 
@@ -176,17 +199,6 @@ describe("template spec", () => {
     cy.waitTillVisible("h6");
     cy.get("h6").contains(fullName).should("have.text", fullName);
 
-    scrollToElementContaining('Gender')
-    cy.get('label').contains('Gender').then(() => {
-      selectRadioByLabel()
-    })
-    cy.get("button[type='submit']").contains("Save").click()
-    cy.waitTillVisible(".oxd-text--toast-message");
-    cy.get(".oxd-text--toast-message").should(
-      "have.text",
-      "Successfully Updated"
-    );
-
-
+    updateGenderAndBloodGroup()
   });
 });
