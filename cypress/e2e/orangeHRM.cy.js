@@ -26,7 +26,7 @@ describe("template spec", () => {
       password: firstName + "123" + lastName,
     };
   }
-  
+
   function logout() {
     cy.get("span img").click()
     cy.get("li a").contains("Logout").click()
@@ -126,6 +126,16 @@ describe("template spec", () => {
       password,
     });
   }
+
+  function scrollToElementContaining(text) {
+    cy.contains(text)
+      .scrollIntoView();
+  }
+  function selectRadioByLabel() {
+    cy.get('input[value = "2"]')
+      .check({ force: true });
+  }
+
   before(() => {
     cy.visit("/");
     cy.title().should("eq", "OrangeHRM");
@@ -148,7 +158,7 @@ describe("template spec", () => {
     cy.get("input[placeholder='Type for hints...']").type(firstName)
     cy.get('.oxd-autocomplete-option > span').click()
     cy.get("button[type='submit']").click()
-    
+
     cy.get(".orangehrm-directory-card-header")
       .invoke('text')
       .then((text) => {
@@ -157,9 +167,18 @@ describe("template spec", () => {
       });
 
     logout()
-    cy.fixture(employeeCredentialsFile).then((employee)=>{
+    cy.fixture(employeeCredentialsFile).then((employee) => {
       login(employee.username, employee.password)
-      cy.get("p.oxd-userdropdown-name").should("have.text",fullName)
+      cy.get("p.oxd-userdropdown-name").should("have.text", fullName)
+    })
+
+    cy.get("a").contains("My Info").click();
+    cy.waitTillVisible("h6");
+    cy.get("h6").contains(fullName).should("have.text", fullName);
+
+    scrollToElementContaining('Gender')
+    cy.get('label').contains('Gender').then(() => {
+      selectRadioByLabel()
     })
 
   });
