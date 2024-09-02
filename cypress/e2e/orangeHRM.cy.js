@@ -26,6 +26,12 @@ describe("template spec", () => {
       password: firstName + "123" + lastName,
     };
   }
+  
+  function logout() {
+    cy.get("span img").click()
+    cy.get("li a").contains("Logout").click()
+    cy.waitTillVisible("h5")
+  }
 
   function createEmployee() {
     cy.get("span").contains("PIM").click();
@@ -149,6 +155,12 @@ describe("template spec", () => {
         const normalizedText = text.replace(/\s+/g, ' ').trim(); // Collapse multiple spaces into one and trim
         expect(normalizedText).to.eq(fullName);
       });
+
+    logout()
+    cy.fixture(employeeCredentialsFile).then((employee)=>{
+      login(employee.username, employee.password)
+      cy.get("p.oxd-userdropdown-name").should("have.text",fullName)
+    })
 
   });
 });
