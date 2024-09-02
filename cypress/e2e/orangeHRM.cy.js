@@ -42,6 +42,7 @@ describe("template spec", () => {
 
     const fullName = firstName + " " + lastName;
 
+
     const { username, password } = generateUsernameAndPassword(
       firstName,
       lastName
@@ -76,7 +77,6 @@ describe("template spec", () => {
             });
         };
         checkUniqueId();
-        console.log(employeeId);
         cy.get("label")
           .contains("Username")
           .parent()
@@ -97,6 +97,7 @@ describe("template spec", () => {
           .type(password);
       });
 
+
     cy.get("button[type='submit']").click();
     cy.waitTillVisible(".oxd-text--toast-message");
     cy.get(".oxd-text--toast-message").should(
@@ -107,9 +108,9 @@ describe("template spec", () => {
     cy.get("h6").should("contain.text", fullName);
 
     return {
+      fullName,
       username,
       password,
-      employeeId,
     };
   }
 
@@ -127,17 +128,27 @@ describe("template spec", () => {
   it("passes", () => {
     cy.waitTillVisible("h6");
     cy.get("h6").should("have.text", "Dashboard");
-    const { username, password, employeeId } = createEmployee();
+    const { fullName, username, password } = createEmployee();
+
     storeEmployeeCredentials(username, password);
+
     cy.get("a").contains("PIM").click();
     cy.waitTillVisible("h5");
     cy.get("h5").should("have.text", "Employee Information");
-    cy.get("label")
-      .contains("Employee Id")
-      .parent()
-      .siblings("div")
-      .find("input")
-      .type(employeeId);
-    cy.get("button[type='submit']").click();
+
+    cy.get("span").contains("Directory").click()
+    cy.waitTillVisible("h5")
+    const firstName = fullName.split(' ')[0]
+    cy.get("input[placeholder='Type for hints...']").type(firstName)
+    cy.get('.oxd-autocomplete-option > span').click()
+    cy.get("button[type='submit']").click()
+    
+    cy.get(".orangehrm-directory-card-header")
+      .invoke('text')
+      .then((text) => {
+        const normalizedText = text.replace(/\s+/g, ' ').trim(); // Collapse multiple spaces into one and trim
+        expect(normalizedText).to.eq(fullName);
+      });
+
   });
 });
