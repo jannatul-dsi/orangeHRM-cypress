@@ -131,10 +131,7 @@ describe("template spec", () => {
     cy.contains(text)
       .scrollIntoView();
   }
-  function selectRadioByLabel() {
-    cy.get('input[value = "2"]')
-      .check({ force: true });
-  }
+
 
   before(() => {
     cy.visit("/");
@@ -178,7 +175,8 @@ describe("template spec", () => {
 
     scrollToElementContaining('Gender')
     cy.get('label').contains('Gender').then(() => {
-      selectRadioByLabel()
+      cy.get('input[value = "2"]')
+        .check({ force: true });
     })
 
   });
