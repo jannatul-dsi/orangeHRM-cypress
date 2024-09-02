@@ -131,7 +131,10 @@ describe("template spec", () => {
     cy.contains(text)
       .scrollIntoView();
   }
-
+  function selectRadioByLabel() {
+    cy.get('input[value = "2"]')
+      .check({ force: true });
+  }
 
   before(() => {
     cy.visit("/");
@@ -175,9 +178,15 @@ describe("template spec", () => {
 
     scrollToElementContaining('Gender')
     cy.get('label').contains('Gender').then(() => {
-      cy.get('input[value = "2"]')
-        .check({ force: true });
+      selectRadioByLabel()
     })
+    cy.get("button[type='submit']").contains("Save").click()
+    cy.waitTillVisible(".oxd-text--toast-message");
+    cy.get(".oxd-text--toast-message").should(
+      "have.text",
+      "Successfully Updated"
+    );
+
 
   });
 });
