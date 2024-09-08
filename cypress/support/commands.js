@@ -32,7 +32,7 @@ const loginPage = new LoginPage()
 Cypress.Commands.add("waitTillVisible", (selector, timeout = 20000) => {
     cy.get(selector, { timeout }).should("be.visible")
 })
-Cypress.Commands.add("Login", (userName, password) => {
+Cypress.Commands.add("login", (userName, password) => {
     cy.session([userName, password], () => {
         cy.visit("/")
         loginPage.enterUserName(userName)
