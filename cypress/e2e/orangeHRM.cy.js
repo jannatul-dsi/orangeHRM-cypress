@@ -82,42 +82,42 @@ describe("template spec", () => {
   //     firstName,
   //     lastName
   //   );
-  //   cy.get('label').contains("Employee Id").parent().siblings('div').find('input').should('be.visible');
-  //   let employeeId = "";
-  //   cy.get('label').contains("Employee Id").parent().siblings('div').find('input').invoke("val").then((value) => {
-  //     employeeId = value;
-  //     cy.log(employeeId)
+    // cy.get('label').contains("Employee Id").parent().siblings('div').find('input').should('be.visible');
+    // let employeeId = "";
+    // cy.get('label').contains("Employee Id").parent().siblings('div').find('input').invoke("val").then((value) => {
+    //   employeeId = value;
+    //   cy.log(employeeId)
 
 
-  //     // cy.document().then((doc) => {
-  //     //   employeeId = doc.querySelector('label'.contains('Employee Id').parent().siblings('div').find('input')).value;
-  //     // })
-  //     cy.log(employeeId)
-  //     // cy.wait(1000000)
-  //     // Save Employee Details to a file
-  //     storeEmployeeCredentials(username, password, employeeId, fullName)
-  //   }
-  //   );
-  //   cy.get("input[type='checkbox']").click({ force: true });
-  //   cy.fixture(employeeCredentialsFile).then((employee) => {
-  //     cy.get("label")
-  //       .contains("Username")
-  //       .parent()
-  //       .siblings("div")
-  //       .find("input")
-  //       .type(employee.username);
-  //     cy.get("label")
-  //       .contains("Password")
-  //       .parent()
-  //       .siblings("div")
-  //       .find("input")
-  //       .type(employee.password);
-  //     cy.get("label")
-  //       .contains("Confirm Password")
-  //       .parent()
-  //       .siblings("div")
-  //       .find("input")
-  //       .type(employee.password);
+    //   // cy.document().then((doc) => {
+    //   //   employeeId = doc.querySelector('label'.contains('Employee Id').parent().siblings('div').find('input')).value;
+    //   // })
+    //   cy.log(employeeId)
+    //   // cy.wait(1000000)
+    //   // Save Employee Details to a file
+    //   storeEmployeeCredentials(username, password, employeeId, fullName)
+    // }
+    // );
+    // cy.get("input[type='checkbox']").click({ force: true });
+    // cy.fixture(employeeCredentialsFile).then((employee) => {
+    //   cy.get("label")
+    //     .contains("Username")
+    //     .parent()
+    //     .siblings("div")
+    //     .find("input")
+    //     .type(employee.username);
+    //   cy.get("label")
+    //     .contains("Password")
+    //     .parent()
+    //     .siblings("div")
+    //     .find("input")
+    //     .type(employee.password);
+    //   cy.get("label")
+    //     .contains("Confirm Password")
+    //     .parent()
+    //     .siblings("div")
+    //     .find("input")
+    //     .type(employee.password);
 
 
   //     cy.get("button[type='submit']").click();
