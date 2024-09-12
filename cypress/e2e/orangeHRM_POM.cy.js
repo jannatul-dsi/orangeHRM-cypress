@@ -28,6 +28,9 @@ describe("orangeHRM", () => {
             .enterPassword(password)
             .enterConfirmPassword(password)
             .saveEmployeeDetails(employeeCredentialsFile, userName, password)
+            .clickOnSaveButton()
+            .assertSuccessMessage()
+
 
     })
 })

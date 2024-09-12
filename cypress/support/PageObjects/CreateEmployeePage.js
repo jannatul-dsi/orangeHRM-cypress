@@ -1,4 +1,5 @@
 import CreateEmployeePageObjects from "../Wiring/CreateEmployeePageObjects"
+import EmployeeInfoPage from "./EmployeeInfoPage"
 import RandomMethods from "./RandomMethods"
 
 const createEmployeeObjects = new CreateEmployeePageObjects()
@@ -42,6 +43,15 @@ class CreateEmployeePage {
             randomMethods.storeEmployeeCredentials(fileName, userName, password, employeeId)
         })
         return this
+    }
+    clickOnSaveButton() {
+        cy.get(createEmployeeObjects.getSaveButton()).click()
+        return this
+    }
+    assertSuccessMessage() {
+        cy.get(createEmployeeObjects.getSuccessMessage()).should("have.text", "Successfully Saved")
+        let employee = new EmployeeInfoPage()
+        return employee
     }
 }
 
