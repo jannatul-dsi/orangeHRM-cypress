@@ -23,9 +23,29 @@
 //
 // -- This will overwrite an existing command --
 
-const { timeout } = require("async");
+import LoginPage from "./PageObjects/LoginPage"
+
+const loginPage = new LoginPage()
+
 
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("waitTillVisible", (selector, timeout = 20000) => {
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false
+})
+
+Cypress.Commands.add("waitTillVisible", (selector, timeout = 10000) => {
     cy.get(selector, { timeout }).should("be.visible")
+})
+
+Cypress.Commands.add("login", (userName, password) => {
+    cy.session([userName, password], () => {
+        cy.visit("/")
+        cy.title().should("eq", "OrangeHRM")
+        loginPage.enterUserName(userName)
+            .enterPassword(password)
+            .clickSubmitButton()
+    }, {
+        cacheAcrossSpecs: true
+    })
+    cy.visit("/")
 })
