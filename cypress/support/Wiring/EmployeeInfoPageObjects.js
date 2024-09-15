@@ -9,10 +9,6 @@ const customDetailsSaveButtonSelector = "h6:contains('Custom Fields')"
 const successMessageSelector = "p[class*='oxd-text--toast-title']"
 
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the Employee Information Page Objects.
  *
  * @memberof Wiring

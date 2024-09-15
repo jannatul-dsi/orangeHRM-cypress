@@ -4,10 +4,6 @@ import DashboardPage from "./DashboardPage"
 const directoryPageObjects = new DirectoryPageObjects()
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the Directory Page.
  *
  * @memberof Pages

@@ -6,10 +6,6 @@ import PIMPage from "./PIMPage"
 const dashboardPageObjects = new DashboardPageObjects()
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the Dashboard Page.
  *
  * @memberof Pages

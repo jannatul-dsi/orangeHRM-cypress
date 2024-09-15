@@ -3,10 +3,6 @@ const password = "input[name='password']"
 const submitButton = "[type='submit']"
 
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the Login Page Objects.
  *
  * @memberof Wiring

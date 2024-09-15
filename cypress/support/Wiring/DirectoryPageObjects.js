@@ -4,10 +4,6 @@ const searchButtonSelector = "button[type='submit']"
 const fullNameSelector = ".orangehrm-directory-card-header"
 
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the Directory Page Objects.
  *
  * @memberof Wiring

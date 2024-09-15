@@ -6,10 +6,6 @@ const logoutSelector = "li a:contains('Logout')"
 const fullNameSelector = "p[class='oxd-userdropdown-name']"
 const myInfoSelector = "ul li a span:contains('My Info')"
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the Dashboard Page Objects.
  *
  * @memberof Wiring

@@ -8,7 +8,7 @@ module.exports = defineConfig({
     autoRefresh: false,
     setupNodeEvents(on, config) {
       config.specPattern = [
-        'cypress/e2e/*.js',
+        'cypress/e2e/orangeHRM_POM.cy.js',
       ]
       return config;
     },

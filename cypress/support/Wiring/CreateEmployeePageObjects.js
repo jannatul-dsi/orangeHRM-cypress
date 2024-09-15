@@ -8,10 +8,6 @@ const saveButton = "button[type='submit']"
 const successMessage = "p[class*='oxd-text--toast-message']"
 
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the Create Employee Page Objects.
  *
  * @memberof Wiring

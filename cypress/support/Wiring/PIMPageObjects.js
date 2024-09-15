@@ -5,10 +5,6 @@ const searchButtonSelector = "button[type='submit']"
 const firstNameSelector = "div[role='cell'] div"
 
 /**
- * @namespace Wiring
- */
-
-/**
  * Represents the PIM Page Objects.
  *
  * @memberof Wiring

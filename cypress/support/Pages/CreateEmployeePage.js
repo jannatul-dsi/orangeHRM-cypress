@@ -4,9 +4,6 @@ import RandomMethods from "./RandomMethods"
 
 const createEmployeeObjects = new CreateEmployeePageObjects()
 const randomMethods = new RandomMethods()
-/**
- * @namespace Pages
- */
 
 /**
  * Represents the Create Employee Page.

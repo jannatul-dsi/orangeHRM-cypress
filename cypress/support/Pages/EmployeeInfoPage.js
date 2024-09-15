@@ -6,10 +6,6 @@ const employeeInfoPageObjects = new EmployeeInfoPageObjects()
 const randomMethods = new RandomMethods()
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the Employee Information Page.
  *
  * @memberof Pages

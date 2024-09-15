@@ -5,10 +5,6 @@ import DashboardPage from "./DashboardPage"
 const pimPageObjects = new PIMPageObjects()
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the PIM Page.
  *
  * @memberof Pages

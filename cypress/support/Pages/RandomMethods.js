@@ -1,10 +1,6 @@
 const { faker } = require("@faker-js/faker");
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the Random Functions
  *
  * @memberof Pages

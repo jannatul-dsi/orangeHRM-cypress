@@ -4,10 +4,6 @@ import DashboardPage from "./DashboardPage"
 const loginPageObjects = new LoginPageObjects()
 
 /**
- * @namespace Pages
- */
-
-/**
  * Represents the Login Page.
  *
  * @memberof Pages
