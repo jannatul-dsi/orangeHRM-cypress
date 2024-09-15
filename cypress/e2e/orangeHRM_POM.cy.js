@@ -1,5 +1,5 @@
-import DashboardPage from "../support/PageObjects/DashboardPage";
-import RandomMethods from "../support/PageObjects/RandomMethods";
+import DashboardPage from "../support/Pages/DashboardPage";
+import RandomMethods from "../support/Pages/RandomMethods";
 
 describe("orangeHRM", () => {
     const adminUserName = "Admin";

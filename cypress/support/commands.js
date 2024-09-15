@@ -1,42 +1,39 @@
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
+// This file shows how to create custom commands and overwrite
+// existing commands in Cypress. For more examples and comprehensive
+// guidance on custom commands, visit:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
 
-import LoginPage from "./PageObjects/LoginPage"
+import LoginPage from "./Pages/LoginPage"
 
 const loginPage = new LoginPage()
 
-
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Event handler for uncaught exceptions to prevent test failures
 Cypress.on('uncaught:exception', (err, runnable) => {
+    // Returning false here prevents Cypress from failing the test
     return false
 })
 
+/**
+ * Waits until the specified element is visible on the page.
+ *
+ * @param {string} selector - The CSS selector for the element to wait for.
+ * @param {number} [timeout=10000] - The time in milliseconds to wait before timing out.
+ */
 Cypress.Commands.add("waitTillVisible", (selector, timeout = 10000) => {
     cy.get(selector, { timeout }).should("be.visible")
 })
 
+/**
+ * Logs in a user by visiting the login page and submitting credentials.
+ *
+ * @param {string} userName - The username for login.
+ * @param {string} password - The password for login.
+ *
+ * @example
+ * cy.login('username', 'password')
+ */
 Cypress.Commands.add("login", (userName, password) => {
     cy.session([userName, password], () => {
         cy.visit("/")
@@ -47,5 +44,5 @@ Cypress.Commands.add("login", (userName, password) => {
     }, {
         cacheAcrossSpecs: true
     })
-    cy.visit("/")
+    cy.visit("/") // Ensure the user is on the homepage after login
 })

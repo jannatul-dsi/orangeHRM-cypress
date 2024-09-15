@@ -1,0 +1,17 @@
+{
+    "source": {
+      "include": [
+        "cypress/support/pages",
+        "cypress/support/wiring"
+      ]
+    },
+    "opts": {
+      "destination": "cypress/docs",
+      "recurse": true,
+      "template": "node_modules/docdash"
+    },
+    "plugins": [
+      "plugins/markdown"
+    ]
+  }
+  

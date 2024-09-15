@@ -165,13 +165,17 @@
     "yauzl": "^2.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "cypress": "^13.14.1"
+    "cypress": "^13.14.1",
+    "docdash": "^2.0.2",
+    "jsdoc": "^4.0.3",
+    "jsdoc-template": "^1.2.0"
   }
 }
