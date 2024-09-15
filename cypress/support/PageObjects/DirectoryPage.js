@@ -15,7 +15,6 @@ class DirectoryPage {
                 const normalizedText = text.replace(/\s+/g, ' ').trim();
                 expect(normalizedText).to.eq(fullName);
             });
-
         return this
     }
 }

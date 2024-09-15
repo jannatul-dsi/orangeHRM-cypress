@@ -1,4 +1,5 @@
 const { faker } = require("@faker-js/faker");
+
 class RandomMethods {
     getUserName() {
         return {
@@ -24,12 +25,17 @@ class RandomMethods {
     }
 
     generateUserNameAndPassword() {
-        const username = this.generateRandomString(12); 
+        const username = this.generateRandomString(12);
         const password = this.generateRandomString(16);
         return {
             userName: username,
             password: password
         };
+    }
+
+    scrollToElementContaining(text) {
+        cy.contains(text)
+            .scrollIntoView();
     }
 }
 
