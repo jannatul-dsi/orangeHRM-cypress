@@ -9,7 +9,7 @@ describe("orangeHRM", () => {
     const randomMethods = new RandomMethods()
 
     const {firstName, lastName} = randomMethods.getUserName()
-    const {userName, password} = randomMethods.generateUserNameAndPassword(firstName, lastName)
+    const {userName, password} = randomMethods.generateUserNameAndPassword()
 
     const dashboard = new DashboardPage()
     before(() => {
