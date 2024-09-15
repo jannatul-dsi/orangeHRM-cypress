@@ -26,7 +26,7 @@ class RandomMethods {
 
     generateUserNameAndPassword() {
         const username = this.generateRandomString(12);
-        const password = this.generateRandomString(16);
+        const password = this.generateRandomString(16) + "9";
         return {
             userName: username,
             password: password
@@ -38,8 +38,7 @@ class RandomMethods {
             .scrollIntoView();
     }
     selectRadioByLabel() {
-        cy.get('input[value = "2"]')
-            .check({ force: true });
+        cy.get('label:contains("Female")').click()
     }
 }
 
