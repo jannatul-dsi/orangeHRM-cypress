@@ -57,6 +57,8 @@ describe("orangeHRM", () => {
             .selectBloodGroup()
             .clickOnCustomDetailsSaveButton()
             .assertSuccessMessage()
+        dashboard.logout()
+            .assertLoginPageVisibility()
     })
 })
 
