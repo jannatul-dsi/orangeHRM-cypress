@@ -19,6 +19,15 @@ class DashboardPage {
         let directoryPage = new DirectoryPage()
         return directoryPage
     }
+    logout() {
+        cy.get(dashboardPageObjects.getImageSelector()).click()
+        cy.get(dashboardPageObjects.getLogoutSelector()).click()
+        return this
+    }
+    assertLoginPageVisibility() {
+        cy.title().should("eq", "OrangeHRM")
+        return this
+    }
 
 }
 

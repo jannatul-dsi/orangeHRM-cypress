@@ -1,4 +1,5 @@
 import DirectoryPageObjects from "../Wiring/DirectoryPageObjects"
+import DashboardPage from "./DashboardPage"
 
 const directoryPageObjects = new DirectoryPageObjects()
 class DirectoryPage {
@@ -15,7 +16,9 @@ class DirectoryPage {
                 const normalizedText = text.replace(/\s+/g, ' ').trim();
                 expect(normalizedText).to.eq(fullName);
             });
-        return this
+
+        let dashboard = new DashboardPage()
+        return dashboard
     }
 }
 export default DirectoryPage

@@ -34,7 +34,7 @@ describe("orangeHRM", () => {
             .assertEmployeeNameVisibility(fullName)
             .selectNationality()
             .clickOnSaveButton()
-            .assertSuccessMessage("Updated")
+            .assertSuccessMessage()
             .navigateToPIM()
             .assertPIMHeaderVisibility()
             .searchEmployeeByID(employeeCredentialsFile)
@@ -42,6 +42,8 @@ describe("orangeHRM", () => {
             .navigateToDirectory()
             .searchEmployeeByName(firstName)
             .assertFullNameVisibility(fullName)
+            .logout()
+            .assertLoginPageVisibility()
 
     })
 })

@@ -21,7 +21,7 @@ class EmployeeInfoPage {
         cy.get(employeeInfoPageObjects.getSaveButtonSelector()).siblings("form").find("button[type='submit']").contains("Save").click()
         return this
     }
-    assertSuccessMessage(text) {
+    assertSuccessMessage() {
         cy.get(employeeInfoPageObjects.getSuccessMessageSelector()).should("have.text", "Successfully Saved")
         let dashboard = new DashboardPage()
         return dashboard
