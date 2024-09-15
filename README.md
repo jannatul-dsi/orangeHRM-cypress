@@ -35,6 +35,12 @@ Ensure you have the following tools installed on your machine:
     ```bash
     npx cypress run
     ```
+### Documentation
+1. Run to create the documentation with JSDoc tool using docdash theme
+    ```bash
+    npx jsdoc -c jsdoc.json
+    ```
+2. Run the index.html file
 
 ### Scenarios Implemented
 Please click [here](https://drive.google.com/file/d/1FtadtzJwOJvYIE8dyghQJD2kigJw3zyX/view)
