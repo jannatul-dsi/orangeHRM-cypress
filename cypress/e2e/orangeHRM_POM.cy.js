@@ -32,8 +32,13 @@ describe("orangeHRM", () => {
             .clickOnSaveButton()
             .assertSuccessMessage()
             .assertEmployeeNameVisibility(fullName)
+            .navigateToPIM()
+            .assertPIMHeaderVisibility()
+            .searchEmployeeByID(employeeCredentialsFile)
+            .assertFirstNameVisibility(firstName)
             .navigateToDirectory()
-
+            .searchEmployeeByName(firstName)
+            .assertFullNameVisibility(fullName)
 
     })
 })

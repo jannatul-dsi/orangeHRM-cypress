@@ -1,11 +1,16 @@
 const dashboardHeader = "h6"
 const PIMSelector = "ul li a span:contains('PIM')"
-class DashboardPageObjects{
+const directoryPageSelector = "ul li a span:contains('Directory')"
+
+class DashboardPageObjects {
     getDashboardHeader() {
         return dashboardHeader
     }
     getPIMSelector() {
         return PIMSelector
+    }
+    getDirectorySelector() {
+        return directoryPageSelector
     }
 
 }

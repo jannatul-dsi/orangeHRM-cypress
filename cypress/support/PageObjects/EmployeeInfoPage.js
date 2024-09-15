@@ -1,17 +1,13 @@
 import EmployeeInfoPageObjects from "../Wiring/EmployeeInfoPageObjects"
-import DirectoryPage from "./DirectoryPage"
+import DashboardPage from "./DashboardPage"
 
 const employeeInfoPageObjects = new EmployeeInfoPageObjects()
 
 class EmployeeInfoPage {
     assertEmployeeNameVisibility(fullName) {
         cy.get(employeeInfoPageObjects.getEmployeeNameSelector()).should('contain', fullName)
-        return this
-    }
-    navigateToDirectory() {
-        cy.get(employeeInfoPageObjects.getDirectorySelector()).click()
-        let directoryPage = new DirectoryPage()
-        return directoryPage
+        let dashboard = new DashboardPage()
+        return dashboard
     }
 }
 
