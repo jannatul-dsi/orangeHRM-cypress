@@ -1,5 +1,6 @@
 import DashboardPageObjects from "../Wiring/DashboardPageObjects"
 import DirectoryPage from "./DirectoryPage"
+import EmployeeInfoPage from "./EmployeeInfoPage"
 import PIMPage from "./PIMPage"
 
 const dashboardPageObjects = new DashboardPageObjects()
@@ -19,6 +20,12 @@ class DashboardPage {
         let directoryPage = new DirectoryPage()
         return directoryPage
     }
+    navigateToMyInfo() {
+        cy.get(dashboardPageObjects.getMyInforSelector()).click()
+        let employeeInfoPage = new EmployeeInfoPage()
+        return employeeInfoPage
+
+    }
     logout() {
         cy.get(dashboardPageObjects.getImageSelector()).click()
         cy.get(dashboardPageObjects.getLogoutSelector()).click()
@@ -26,6 +33,10 @@ class DashboardPage {
     }
     assertLoginPageVisibility() {
         cy.title().should("eq", "OrangeHRM")
+        return this
+    }
+    assertFullNameVisibility(fullName) {
+        cy.get(dashboardPageObjects.getFullNameSelector()).should("have.text", fullName)
         return this
     }
 

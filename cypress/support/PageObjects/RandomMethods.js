@@ -37,6 +37,10 @@ class RandomMethods {
         cy.contains(text)
             .scrollIntoView();
     }
+    selectRadioByLabel() {
+        cy.get('input[value = "2"]')
+            .check({ force: true });
+    }
 }
 
 export default RandomMethods

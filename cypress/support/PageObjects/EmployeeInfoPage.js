@@ -17,12 +17,30 @@ class EmployeeInfoPage {
         cy.get(employeeInfoPageObjects.getOptionSelector()).contains("Bangladeshi").click();
         return this
     }
-    clickOnSaveButton() {
-        cy.get(employeeInfoPageObjects.getSaveButtonSelector()).siblings("form").find("button[type='submit']").contains("Save").click()
+    selectGender() {
+        randomMethods.scrollToElementContaining("Gender")
+        cy.get(employeeInfoPageObjects.getGenderSelector()).then(() => {
+            randomMethods.selectRadioByLabel()
+        })
+        return this
+    }
+    selectBloodGroup() {
+        randomMethods.scrollToElementContaining("Blood Type")
+        cy.get(employeeInfoPageObjects.getBloodGroupSelector()).parent('div').siblings("div").find("i").click()
+        cy.get(employeeInfoPageObjects.getListSelector()).should('be.visible')
+        cy.get(employeeInfoPageObjects.getOptionSelector()).contains("O+").click();
+        return this
+    }
+    clickOnPersonalDetailsSaveButton() {
+        cy.get(employeeInfoPageObjects.getPersonalDetailsSaveButtonSelector()).siblings("form").find("button[type='submit']").contains("Save").click()
+        return this
+    }
+    clickOnCustomDetailsSaveButton() {
+        cy.get(employeeInfoPageObjects.getCustomDetailsSaveButtonSelector()).siblings("form").find("button[type='submit']").contains("Save").click()
         return this
     }
     assertSuccessMessage() {
-        cy.get(employeeInfoPageObjects.getSuccessMessageSelector()).should("have.text", "Successfully Saved")
+        cy.get(employeeInfoPageObjects.getSuccessMessageSelector()).should("have.text", "Success")
         let dashboard = new DashboardPage()
         return dashboard
     }
