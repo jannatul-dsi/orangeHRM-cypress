@@ -8,8 +8,9 @@ describe("orangeHRM", () => {
 
     const randomMethods = new RandomMethods()
 
-    const {firstName, lastName} = randomMethods.getUserName()
-    const {userName, password} = randomMethods.generateUserNameAndPassword()
+    const { firstName, lastName } = randomMethods.getUserName()
+    const { userName, password } = randomMethods.generateUserNameAndPassword()
+    const fullName = firstName + " " + lastName
 
     const dashboard = new DashboardPage()
     before(() => {
@@ -30,6 +31,8 @@ describe("orangeHRM", () => {
             .saveEmployeeDetails(employeeCredentialsFile, userName, password)
             .clickOnSaveButton()
             .assertSuccessMessage()
+            .assertEmployeeNameVisibility(fullName)
+            .navigateToDirectory()
 
 
     })
