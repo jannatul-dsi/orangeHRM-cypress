@@ -14,7 +14,6 @@ describe("orangeHRM", () => {
 
     const dashboard = new DashboardPage()
     before(() => {
-        // cy.clearSession()
         cy.login(adminUserName, adminPassword)
     });
     it("passes", () => {

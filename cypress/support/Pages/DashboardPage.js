@@ -1,6 +1,7 @@
 import DashboardPageObjects from "../Wiring/DashboardPageObjects"
 import DirectoryPage from "./DirectoryPage"
 import EmployeeInfoPage from "./EmployeeInfoPage"
+import LoginPage from "./LoginPage"
 import PIMPage from "./PIMPage"
 
 const dashboardPageObjects = new DashboardPageObjects()
@@ -64,17 +65,8 @@ class DashboardPage {
     logout() {
         cy.get(dashboardPageObjects.getImageSelector()).click()
         cy.get(dashboardPageObjects.getLogoutSelector()).click()
-        return this
-    }
-
-    /**
-     * Asserts that the login page is visible by checking the page title.
-     *
-     * @returns {DashboardPage} The current instance of `DashboardPage` for method chaining.
-     */
-    assertLoginPageVisibility() {
-        cy.title().should("eq", "OrangeHRM")
-        return this
+        let loginPage = new LoginPage()
+        return loginPage
     }
 
     /**
